@@ -284,12 +284,11 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 8, 3, 8);
         add(comboEstado, gridBagConstraints);
 
-        jfVin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        jfVin.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jfVinKeyTyped(evt);
-            }
-        });
+        try {
+            jfVin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("*****************########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
@@ -390,10 +389,6 @@ public class Crear extends javax.swing.JPanel {
     private void tfStockNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfStockNumberKeyTyped
         quitarNumeros(evt);
     }//GEN-LAST:event_tfStockNumberKeyTyped
-
-    private void jfVinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jfVinKeyTyped
-        quitarNumeros(evt);
-    }//GEN-LAST:event_jfVinKeyTyped
 
     private void quitarNumeros(java.awt.event.KeyEvent evt) {
         if (!Character.isDigit(evt.getKeyChar())) {

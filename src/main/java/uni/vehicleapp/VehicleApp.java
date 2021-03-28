@@ -12,6 +12,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import uni.panels.Crear;
 import uni.controls.CrearControl;
+import uni.panels.Buscar;
+import uni.controls.BuscarControl;
 
 /**
  *
@@ -21,6 +23,8 @@ public class VehicleApp extends javax.swing.JFrame {
     
     private Crear crear;
     private CrearControl crearControl;
+    private Buscar buscar;
+    private BuscarControl buscarControl;
 
     /**
      * Creates new form VehicleApp
@@ -126,6 +130,11 @@ public class VehicleApp extends javax.swing.JFrame {
         panelBienvenida.add(botonCrear, gridBagConstraints);
 
         botonLeerTodos.setText("Leer todos");
+        botonLeerTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLeerTodosActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -180,6 +189,18 @@ public class VehicleApp extends javax.swing.JFrame {
         validate();
         repaint();
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void botonLeerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLeerTodosActionPerformed
+        panelPrincipal.removeAll();
+        if (buscar == null) {
+            buscar = new Buscar();
+            buscarControl = new BuscarControl(buscar);
+        }
+        panelPrincipal.add(buscar, BorderLayout.CENTER);
+        botonAtras.setEnabled(true);
+        validate();
+        repaint();
+    }//GEN-LAST:event_botonLeerTodosActionPerformed
 
     
     /**
