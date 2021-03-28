@@ -47,6 +47,7 @@ public class VehicleDaoImplement extends FilesConnection implements VehicleDao {
             }
         }
         
+        cerrar();
         return vehicle;
     }
 

@@ -5,12 +5,17 @@
  */
 package uni.controls;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import uni.implement.VehicleDaoImplement;
 import uni.panels.Buscar;
+import javax.swing.table.TableRowSorter;
+import javax.swing.RowFilter;
 
 /**
  *
@@ -19,6 +24,7 @@ import uni.panels.Buscar;
 public class BuscarControl {
     private final Buscar buscar;
     private DefaultTableModel defaultTableModel;
+    private TableRowSorter tableRowSorter;
     private VehicleDaoImplement vDao;
     private final static String nombreColumnas[] = new String[]{
         "ID", "Stock Number", "Año", "Marca", "Modelo", "Estilo", "Vin", "Color Interior", "Color Exterior", "Millas", "Precio", "Transmisión", "Motor", "Imagen", "Estado"
@@ -66,5 +72,33 @@ public class BuscarControl {
         
         defaultTableModel = new DefaultTableModel(data, nombreColumnas);
         buscar.getTablaVehiculos().setModel(defaultTableModel);
+        filtrar(defaultTableModel);
+    }
+    
+    private void filtrar(DefaultTableModel defaultTableModel) {
+        buscar.getFieldBuscarID().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                fieldBuscarKeyEvent(e, defaultTableModel, buscar.getFieldBuscarID(), 0);
+            }
+        });
+        buscar.getFieldBuscarEstado().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent ev) {
+                fieldBuscarKeyEvent(ev, defaultTableModel, buscar.getFieldBuscarEstado(), 14);
+            }
+        });
+    }
+    
+    private void fieldBuscarKeyEvent(KeyEvent e, DefaultTableModel defaultTableModel, JTextField textField, int opcion) {
+        tableRowSorter = new TableRowSorter(defaultTableModel);
+        
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                tableRowSorter.setRowFilter(RowFilter.regexFilter(textField.getText(), opcion));
+            }  
+        });
+        buscar.getTablaVehiculos().setRowSorter(tableRowSorter);
     }
 }

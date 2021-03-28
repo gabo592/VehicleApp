@@ -62,11 +62,11 @@ public class VehicleApp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vehicle App");
-        setResizable(false);
 
         panelBotones.setBackground(new java.awt.Color(93, 193, 185));
         panelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
+        botonAtras.setBackground(new java.awt.Color(255, 255, 255));
         botonAtras.setText("Atrás");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +75,7 @@ public class VehicleApp extends javax.swing.JFrame {
         });
         panelBotones.add(botonAtras);
 
+        botonSalir.setBackground(new java.awt.Color(255, 255, 255));
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +88,7 @@ public class VehicleApp extends javax.swing.JFrame {
 
         panelPrincipal.setLayout(new java.awt.BorderLayout());
 
+        panelBienvenida.setBackground(new java.awt.Color(255, 105, 97));
         panelBienvenida.setLayout(new java.awt.GridBagLayout());
 
         labelCrear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -117,6 +119,7 @@ public class VehicleApp extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         panelBienvenida.add(labelEliminar, gridBagConstraints);
 
+        botonCrear.setBackground(new java.awt.Color(255, 255, 255));
         botonCrear.setText("Nuevo");
         botonCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +133,7 @@ public class VehicleApp extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         panelBienvenida.add(botonCrear, gridBagConstraints);
 
+        botonLeerTodos.setBackground(new java.awt.Color(255, 255, 255));
         botonLeerTodos.setText("Leer todos");
         botonLeerTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +147,7 @@ public class VehicleApp extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         panelBienvenida.add(botonLeerTodos, gridBagConstraints);
 
+        botonActualizar.setBackground(new java.awt.Color(255, 255, 255));
         botonActualizar.setText("Actualizar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -151,6 +156,7 @@ public class VehicleApp extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         panelBienvenida.add(botonActualizar, gridBagConstraints);
 
+        botonEliminar.setBackground(new java.awt.Color(255, 255, 255));
         botonEliminar.setText("Eliminar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -185,6 +191,7 @@ public class VehicleApp extends javax.swing.JFrame {
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         panelPrincipal.removeAll();
+        resetPaneles();
         panelPrincipal.add(panelBienvenida, BorderLayout.CENTER);
         botonAtras.setEnabled(false);
         validate();
@@ -203,6 +210,10 @@ public class VehicleApp extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_botonLeerTodosActionPerformed
 
+    private void resetPaneles() {
+        crear = null;
+        buscar = null;
+    }
     
     /**
      * @param args the command line arguments

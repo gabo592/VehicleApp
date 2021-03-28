@@ -50,8 +50,6 @@ public class Vehicle {
         this.imagen = imagen;
         this.estado = estado;
     }
-    
-    
 
     public Vehicle(int id, int stockNumber, int año, String marca, String modelo, String estilo, String vin, String colorExterior, String colorInterior, String miles, float precio, Transmission transmision, String motor, String imagen, String estado) {
         this.id = id;

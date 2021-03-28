@@ -276,7 +276,7 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 8, 3, 8);
         add(comboColorI, gridBagConstraints);
 
-        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Actrivo", "Inactivo" }));
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 7;

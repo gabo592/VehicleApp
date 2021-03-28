@@ -99,6 +99,7 @@ public class CrearControl {
         crear.getComboColorI().setModel(colorE);
         
         botonCrearActionPerformed();
+        botonNuevoActionPerformed();
     }
     
     public void botonCrearActionPerformed() {
@@ -112,6 +113,12 @@ public class CrearControl {
             } catch (IOException ex) {
                 Logger.getLogger(CrearControl.class.getName()).log(Level.SEVERE, null, ex);
             }
+        });
+    }
+    
+    private void botonNuevoActionPerformed() {
+        crear.getBotonNuevoV().addActionListener((ActionEvent e) -> {
+            limpiar();
         });
     }
     
@@ -150,14 +157,22 @@ public class CrearControl {
         
         vehicle = new Vehicle(stockNumber, año, marca, modelo, estilo, vin, colorExterior, colorInterior, miles, precio, transmision, motor, miles, estado);
         vehicleDaoImplement.crear(vehicle);
+        limpiar();
         
         return true;
     }
     
     private boolean validarTextField(JTextField textField) {
-        if (textField.getText() == null || textField.getText().equalsIgnoreCase("")) {
-            return true;
-        }
-        return false;
+        return textField.getText() == null || textField.getText().equalsIgnoreCase(" ");
+    }
+    
+    private void limpiar() {
+        crear.getTfStockNumber().setText("");
+        crear.getTfEstilo().setText("");
+        crear.getSpinnerKm().setValue(0);
+        crear.getSpinnerAño().setValue(0);
+        crear.getJfVin().setText("");
+        crear.getSpinnerPrecio().setValue(0);
+        crear.getTfMotor().setText("");
     }
 }
