@@ -62,6 +62,7 @@ public class VehicleApp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vehicle App");
+        setResizable(false);
 
         panelBotones.setBackground(new java.awt.Color(93, 193, 185));
         panelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));

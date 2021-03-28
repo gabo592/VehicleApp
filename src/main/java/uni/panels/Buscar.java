@@ -44,9 +44,7 @@ public class Buscar extends javax.swing.JPanel {
         panelCuadroBusqueda = new javax.swing.JPanel();
         labelBuscar = new javax.swing.JLabel();
         fieldBuscar = new javax.swing.JTextField();
-        panelContenedorLabelYTabla = new javax.swing.JPanel();
-        panelLabel = new javax.swing.JPanel();
-        labelTituloTabla = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
         contendorTabla = new javax.swing.JScrollPane();
         tablaVehiculos = new javax.swing.JTable();
 
@@ -58,29 +56,32 @@ public class Buscar extends javax.swing.JPanel {
         labelBuscar.setText("Buscar:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(4, 6, 4, 4);
         panelCuadroBusqueda.add(labelBuscar, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 53;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 4, 3);
         panelCuadroBusqueda.add(fieldBuscar, gridBagConstraints);
 
+        labelTitulo.setFont(new java.awt.Font("Constantia", 1, 18)); // NOI18N
+        labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTitulo.setText("Vehículos");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        panelCuadroBusqueda.add(labelTitulo, gridBagConstraints);
+
         add(panelCuadroBusqueda, java.awt.BorderLayout.PAGE_START);
-
-        panelContenedorLabelYTabla.setLayout(new java.awt.BorderLayout());
-
-        labelTituloTabla.setFont(new java.awt.Font("Constantia", 1, 18)); // NOI18N
-        labelTituloTabla.setText("Vehículos");
-        panelLabel.add(labelTituloTabla);
-
-        panelContenedorLabelYTabla.add(panelLabel, java.awt.BorderLayout.PAGE_START);
 
         tablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,11 +94,11 @@ public class Buscar extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaVehiculos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tablaVehiculos.setEnabled(false);
         contendorTabla.setViewportView(tablaVehiculos);
 
-        panelContenedorLabelYTabla.add(contendorTabla, java.awt.BorderLayout.CENTER);
-
-        add(panelContenedorLabelYTabla, java.awt.BorderLayout.CENTER);
+        add(contendorTabla, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -105,10 +106,8 @@ public class Buscar extends javax.swing.JPanel {
     private javax.swing.JScrollPane contendorTabla;
     private javax.swing.JTextField fieldBuscar;
     private javax.swing.JLabel labelBuscar;
-    private javax.swing.JLabel labelTituloTabla;
-    private javax.swing.JPanel panelContenedorLabelYTabla;
+    private javax.swing.JLabel labelTitulo;
     private javax.swing.JPanel panelCuadroBusqueda;
-    private javax.swing.JPanel panelLabel;
     private javax.swing.JTable tablaVehiculos;
     // End of variables declaration//GEN-END:variables
 }

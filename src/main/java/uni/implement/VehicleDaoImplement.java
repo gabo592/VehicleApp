@@ -30,12 +30,51 @@ public class VehicleDaoImplement extends FilesConnection implements VehicleDao {
 
     @Override
     public Vehicle buscarPorId(int id) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Vehicle vehicle = null;
+        getRandomConnection().getRafHead().seek(0);
+        int n = getRandomConnection().getRafHead().readInt();
+        long posHead, posData;
+        int idEncontrado;
+        for (int i = 0; i < n; i++) {
+            posHead = 8 + (i * 8);
+            getRandomConnection().getRafHead().seek(posHead);
+            idEncontrado = getRandomConnection().getRafHead().readInt();
+            if (idEncontrado == id) {
+                posData = (idEncontrado - 1) * SIZE + 4;
+                getRandomConnection().getRafData().seek(posData);
+                vehicle = gson.fromJson(getRandomConnection().getRafData().readUTF(), Vehicle.class);
+                break;
+            }
+        }
+        
+        return vehicle;
     }
 
     @Override
     public List<Vehicle> buscarPorEstado(String estado) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Vehicle> encontrados = null;
+        Vehicle vehicle;
+        
+        getRandomConnection().getRafHead().seek(0);
+        int n = getRandomConnection().getRafHead().readInt();
+        
+        long posHead, posData;
+        int ids;
+        
+        for (int i = 0; i < n; i++) {
+            posHead = 8 + (i * 8);
+            getRandomConnection().getRafHead().seek(posHead);
+            ids = getRandomConnection().getRafHead().readInt();
+            posData = (ids - 1) * SIZE + 4;
+            getRandomConnection().getRafData().seek(posData);
+            vehicle = gson.fromJson(getRandomConnection().getRafData().readUTF(), Vehicle.class);
+            if (vehicle.getEstado().equalsIgnoreCase(estado)) {
+                encontrados.add(vehicle);
+            }
+        }
+        
+        cerrar();
+        return encontrados;
     }
 
     @Override
@@ -102,18 +141,76 @@ public class VehicleDaoImplement extends FilesConnection implements VehicleDao {
             vehicle = gson.fromJson(getRandomConnection().getRafData().readUTF(), Vehicle.class);
             vehiculos.add(vehicle);
         }
-        
+        cerrar();
         return vehiculos;
     }
 
     @Override
     public void actualizar(Vehicle t) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        long posData = (t.getId() - 1) * SIZE + 4;
+        getRandomConnection().getRafData().seek(posData);
+        getRandomConnection().getRafData().writeUTF(gson.toJson(t));
+        cerrar();
     }
 
     @Override
     public void eliminar(Vehicle t) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        /*
+        Estas listas servirán como backup de lo que se desea
+        conservar
+        */
+        List<Integer> listaIds = new ArrayList<>();
+        List<Integer> listaStockNumbers = new ArrayList<>();
+        
+        /*
+        Tomamos los valores de n y los ids antes de ser
+        modificados
+        */
+        getRandomConnection().getRafHead().seek(0);
+        int n = getRandomConnection().getRafHead().readInt();
+        int ids = getRandomConnection().getRafHead().readInt();
+        
+        long posHead;
+        int id;
+        
+        for (int i = 0; i < n; i++) {
+            posHead = 8 + (i * 8);
+            getRandomConnection().getRafHead().seek(posHead);
+            id = getRandomConnection().getRafHead().readInt();
+            
+            /*
+            Siempre y cuando el id del vehículo que andamos buscando
+            no coincida con el actual, éste se guardará. De lo contrario,
+            no se guardará y después de la modificación será ree,plazado
+            */
+            if (t.getId() != id) {
+                listaIds.add(id);
+                listaStockNumbers.add(getRandomConnection().getRafHead().readInt());
+            }
+        }
+        
+        //Reemplazamos los valores de n y los ids
+        getRandomConnection().getRafHead().seek(0);
+        
+        /*
+        Puesto que se está eliminando 1 registro, el número de
+        registros totales (n) disminuye en 1
+        */
+        getRandomConnection().getRafHead().writeInt(--n);
+        getRandomConnection().getRafHead().writeInt(ids); //Los ids no cambian
+        
+        /*
+        Se reemplazan los ids guardados junto con los stock numbers
+        de cada objeto vehículo
+        */
+        for (int i = 0; i < n; i++) {
+            posHead = 8 + (i * 8);
+            getRandomConnection().getRafHead().seek(posHead);
+            getRandomConnection().getRafHead().writeInt(listaIds.get(i));
+            getRandomConnection().getRafHead().writeInt(listaStockNumbers.get(i));
+        }
+        
+        cerrar();
     }
     
 }
