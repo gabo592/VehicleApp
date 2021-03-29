@@ -92,7 +92,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\gabri\workspace\VehicleApp\src\main\java\uni\images\new.png"/>
+                  <Image iconType="2" name="C:\Users\Marat Meitchouk\Documents\SemestreIII\ProgramacionII\VehicleApp\VehicleApp\src\main\java\uni\images\new.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -105,7 +105,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\gabri\workspace\VehicleApp\src\main\java\uni\images\search.png"/>
+                  <Image iconType="2" name="C:\Users\Marat Meitchouk\Documents\SemestreIII\ProgramacionII\VehicleApp\VehicleApp\src\main\java\uni\images\search.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -118,7 +118,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\gabri\workspace\VehicleApp\src\main\java\uni\images\updated.png"/>
+                  <Image iconType="2" name="C:\Users\Marat Meitchouk\Documents\SemestreIII\ProgramacionII\VehicleApp\VehicleApp\src\main\java\uni\images\updated.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -131,7 +131,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\gabri\workspace\VehicleApp\src\main\java\uni\images\recycle-bin.png"/>
+                  <Image iconType="2" name="C:\Users\Marat Meitchouk\Documents\SemestreIII\ProgramacionII\VehicleApp\VehicleApp\src\main\java\uni\images\recycle-bin.png"/>
                 </Property>
               </Properties>
               <Constraints>

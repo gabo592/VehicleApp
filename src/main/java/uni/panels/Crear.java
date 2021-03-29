@@ -18,9 +18,16 @@ import javax.swing.JTextField;
  */
 public class Crear extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Crear
-     */
+    
+    
+    public JButton getBotonBuscarImagen() {
+        return botonBuscarImagen;
+    }
+    
+    public JTextField getjTextFieldImagen() {
+        return jTextFieldImagen;
+    }
+
     public Crear() {
         initComponents();
     }
@@ -132,6 +139,8 @@ public class Crear extends javax.swing.JPanel {
         labelAño = new javax.swing.JLabel();
         botonCrearV = new javax.swing.JButton();
         botonNuevoV = new javax.swing.JButton();
+        jTextFieldImagen = new javax.swing.JTextField();
+        botonBuscarImagen = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -372,7 +381,7 @@ public class Crear extends javax.swing.JPanel {
         botonCrearV.setText("Crear");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         add(botonCrearV, gridBagConstraints);
@@ -380,10 +389,27 @@ public class Crear extends javax.swing.JPanel {
         botonNuevoV.setText("Nuevo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         add(botonNuevoV, gridBagConstraints);
+
+        jTextFieldImagen.setEditable(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        add(jTextFieldImagen, gridBagConstraints);
+
+        botonBuscarImagen.setText("Imagen");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        add(botonBuscarImagen, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfStockNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfStockNumberKeyTyped
@@ -398,6 +424,7 @@ public class Crear extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonBuscarImagen;
     private javax.swing.JButton botonCrearV;
     private javax.swing.JButton botonNuevoV;
     private javax.swing.JComboBox<String> comboColorE;
@@ -406,6 +433,7 @@ public class Crear extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> comboMarcas;
     private javax.swing.JComboBox<String> comboModelo;
     private javax.swing.ButtonGroup groupTransmision;
+    private javax.swing.JTextField jTextFieldImagen;
     private javax.swing.JFormattedTextField jfVin;
     private javax.swing.JLabel labelAño;
     private javax.swing.JLabel labelColorE;

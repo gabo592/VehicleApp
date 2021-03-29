@@ -22,6 +22,8 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import javax.swing.Action;
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import uni.pojo.VehicleBoxModel;
 import uni.implement.VehicleDaoImplement;
@@ -47,19 +49,38 @@ public class CrearControl {
     private VehicleDaoImplement vehicleDaoImplement;
     private Vehicle vehicle;
     private Transmission transmision;
+    private String ruta;  
 
     public CrearControl(Crear crear) {
         gson = new Gson();
         vehicleDaoImplement = new VehicleDaoImplement();
         this.crear = crear;
-        file = new File("C:/Users/gabri/workspace/VehicleApp/src/main/recursos/datosVehiculo.json");
+        file = new File("C:\\Users\\Marat Meitchouk\\Documents\\SemestreIII\\ProgramacionII\\VehicleApp\\VehicleApp\\src\\main\\recursos");
         try {
             init();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CrearControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     private void botonImagenActionPerfomed () {
+         crear.getBotonBuscarImagen().addActionListener((ActionEvent e) -> {
+             BuscarImagen(e);
+         });
+     }
+     
+     private void BuscarImagen (ActionEvent e){
+         JFileChooser JfileChooser = new JFileChooser(); 
+         int Opcion;
+         Opcion = JfileChooser.showOpenDialog(crear);
+            if (Opcion == JFileChooser.CANCEL_OPTION)
+                return;
+            
+        File file = JfileChooser.getSelectedFile();
+        ruta = file.getAbsolutePath();
+     }
     
+     
+     
     private void init() throws FileNotFoundException {
         //Para leer el JSON se necesita de este objeto
         JsonReader jsonReader;
@@ -98,8 +119,10 @@ public class CrearControl {
         crear.getComboColorE().setModel(colorI);
         crear.getComboColorI().setModel(colorE);
         
+        botonImagenActionPerfomed();
         botonCrearActionPerformed();
         botonNuevoActionPerformed();
+        
     }
     
     public void botonCrearActionPerformed() {
@@ -153,9 +176,14 @@ public class CrearControl {
         if (validarTextField(crear.getTfMotor())) return false;
         String motor = crear.getTfMotor().getText();
         
+        if (ruta.isEmpty())
+            return false;
+        
+        crear.getjTextFieldImagen().setText(ruta);
+        
         String estado = crear.getComboEstado().getSelectedItem().toString();
         
-        vehicle = new Vehicle(stockNumber, año, marca, modelo, estilo, vin, colorExterior, colorInterior, miles, precio, transmision, motor, miles, estado);
+        vehicle = new Vehicle(stockNumber, año, marca, modelo, estilo, vin, colorExterior, colorInterior, miles, precio, transmision, motor, ruta, estado);
         vehicleDaoImplement.crear(vehicle);
         limpiar();
         
