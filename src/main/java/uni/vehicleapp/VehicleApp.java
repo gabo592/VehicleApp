@@ -92,28 +92,28 @@ public class VehicleApp extends javax.swing.JFrame {
         panelBienvenida.setLayout(new java.awt.GridBagLayout());
 
         labelCrear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelCrear.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marat Meitchouk\\Documents\\SemestreIII\\ProgramacionII\\VehicleApp\\VehicleApp\\src\\main\\java\\uni\\images\\new.png")); // NOI18N
+        labelCrear.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\new.png")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         panelBienvenida.add(labelCrear, gridBagConstraints);
 
         labelLeerTodos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelLeerTodos.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marat Meitchouk\\Documents\\SemestreIII\\ProgramacionII\\VehicleApp\\VehicleApp\\src\\main\\java\\uni\\images\\search.png")); // NOI18N
+        labelLeerTodos.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\search.png")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         panelBienvenida.add(labelLeerTodos, gridBagConstraints);
 
         labelActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelActualizar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marat Meitchouk\\Documents\\SemestreIII\\ProgramacionII\\VehicleApp\\VehicleApp\\src\\main\\java\\uni\\images\\updated.png")); // NOI18N
+        labelActualizar.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\updated.png")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         panelBienvenida.add(labelActualizar, gridBagConstraints);
 
         labelEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelEliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marat Meitchouk\\Documents\\SemestreIII\\ProgramacionII\\VehicleApp\\VehicleApp\\src\\main\\java\\uni\\images\\recycle-bin.png")); // NOI18N
+        labelEliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\recycle-bin.png")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);

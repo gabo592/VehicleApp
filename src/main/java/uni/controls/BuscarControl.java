@@ -90,13 +90,13 @@ public class BuscarControl {
         });
     }
     
-    private void fieldBuscarKeyEvent(KeyEvent e, DefaultTableModel defaultTableModel, JTextField textField, int opcion) {
+    private void fieldBuscarKeyEvent(KeyEvent e, DefaultTableModel defaultTableModel, JTextField textField, int columna) {
         tableRowSorter = new TableRowSorter(defaultTableModel);
         
         textField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                tableRowSorter.setRowFilter(RowFilter.regexFilter(textField.getText(), opcion));
+                tableRowSorter.setRowFilter(RowFilter.regexFilter(textField.getText(), columna));
             }  
         });
         buscar.getTablaVehiculos().setRowSorter(tableRowSorter);
