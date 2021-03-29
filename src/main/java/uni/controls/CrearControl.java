@@ -28,6 +28,8 @@ import uni.implement.VehicleDaoImplement;
 import uni.pojo.Vehicle;
 import uni.pojo.Vehicle.Transmission;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -48,10 +50,12 @@ public class CrearControl {
     private Vehicle vehicle;
     private Transmission transmision;
     private String ruta;
+    private FileFilter filter;
 
     public CrearControl(Crear crear) {
         gson = new Gson();
         vehicleDaoImplement = new VehicleDaoImplement();
+        filter = new FileNameExtensionFilter("Imágenes", "png", "jpg");
         this.crear = crear;
         file = new File("C:/Users/Sistemas-11/Desktop/VehicleApp/src/main/recursos/datosVehiculo.json");
         try {
@@ -134,6 +138,7 @@ public class CrearControl {
     
     private void BuscarImagen(ActionEvent e) {
         JFileChooser JfileChooser = new JFileChooser();
+        JfileChooser.setFileFilter(filter);
         int Opcion;
         Opcion = JfileChooser.showOpenDialog(crear);
         if (Opcion == JFileChooser.CANCEL_OPTION) {
