@@ -5,15 +5,12 @@
  */
 package uni.vehicleapp;
 
-import java.awt.BorderLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import uni.panels.Crear;
-import uni.controls.CrearControl;
-import uni.panels.Buscar;
-import uni.controls.BuscarControl;
+import uni.views.FCrear;
+import uni.views.FBuscar;
 
 /**
  *
@@ -21,19 +18,15 @@ import uni.controls.BuscarControl;
  */
 public class VehicleApp extends javax.swing.JFrame {
     
-    private Crear crear;
-    private CrearControl crearControl;
-    private Buscar buscar;
-    private BuscarControl buscarControl;
+    private FCrear crear;
+    private FBuscar buscar;
 
     /**
      * Creates new form VehicleApp
      */
     public VehicleApp() {
         initComponents(); //dimension de la ventana [63, 23]
-        if (panelBienvenida.isVisible()) {
-            botonAtras.setEnabled(false);
-        }
+        
     }
 
     /**
@@ -46,174 +39,85 @@ public class VehicleApp extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        panelBotones = new javax.swing.JPanel();
-        botonAtras = new javax.swing.JButton();
-        botonSalir = new javax.swing.JButton();
-        panelPrincipal = new javax.swing.JPanel();
-        panelBienvenida = new javax.swing.JPanel();
-        labelCrear = new javax.swing.JLabel();
-        labelLeerTodos = new javax.swing.JLabel();
-        labelActualizar = new javax.swing.JLabel();
-        labelEliminar = new javax.swing.JLabel();
-        botonCrear = new javax.swing.JButton();
-        botonLeerTodos = new javax.swing.JButton();
-        botonActualizar = new javax.swing.JButton();
-        botonEliminar = new javax.swing.JButton();
+        desktop = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuOpciones = new javax.swing.JMenu();
+        mItemNuevo = new javax.swing.JMenuItem();
+        mItemVer = new javax.swing.JMenuItem();
+        mItemSalir = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vehicle App");
+        getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
 
-        panelBotones.setBackground(new java.awt.Color(93, 193, 185));
-        panelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
+        menuOpciones.setText("Opciones");
 
-        botonAtras.setBackground(new java.awt.Color(255, 255, 255));
-        botonAtras.setText("Atrás");
-        botonAtras.addActionListener(new java.awt.event.ActionListener() {
+        mItemNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mItemNuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sistemas-11\\Desktop\\VehicleApp\\src\\main\\java\\uni\\images\\plus.png")); // NOI18N
+        mItemNuevo.setText("Nuevo");
+        mItemNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAtrasActionPerformed(evt);
+                mItemNuevoActionPerformed(evt);
             }
         });
-        panelBotones.add(botonAtras);
+        menuOpciones.add(mItemNuevo);
 
-        botonSalir.setBackground(new java.awt.Color(255, 255, 255));
-        botonSalir.setText("Salir");
-        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+        mItemVer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mItemVer.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sistemas-11\\Desktop\\VehicleApp\\src\\main\\java\\uni\\images\\view.png")); // NOI18N
+        mItemVer.setText("Ver todos");
+        mItemVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSalirActionPerformed(evt);
+                mItemVerActionPerformed(evt);
             }
         });
-        panelBotones.add(botonSalir);
+        menuOpciones.add(mItemVer);
 
-        getContentPane().add(panelBotones, java.awt.BorderLayout.PAGE_END);
-
-        panelPrincipal.setLayout(new java.awt.BorderLayout());
-
-        panelBienvenida.setBackground(new java.awt.Color(255, 105, 97));
-        panelBienvenida.setLayout(new java.awt.GridBagLayout());
-
-        labelCrear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelCrear.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\new.png")); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
-        panelBienvenida.add(labelCrear, gridBagConstraints);
-
-        labelLeerTodos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelLeerTodos.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\search.png")); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
-        panelBienvenida.add(labelLeerTodos, gridBagConstraints);
-
-        labelActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelActualizar.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\updated.png")); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
-        panelBienvenida.add(labelActualizar, gridBagConstraints);
-
-        labelEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelEliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\recycle-bin.png")); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
-        panelBienvenida.add(labelEliminar, gridBagConstraints);
-
-        botonCrear.setBackground(new java.awt.Color(255, 255, 255));
-        botonCrear.setText("Nuevo");
-        botonCrear.addActionListener(new java.awt.event.ActionListener() {
+        mItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mItemSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sistemas-11\\Desktop\\VehicleApp\\src\\main\\java\\uni\\images\\exit.png")); // NOI18N
+        mItemSalir.setText("Salir");
+        mItemSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCrearActionPerformed(evt);
+                mItemSalirActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
-        panelBienvenida.add(botonCrear, gridBagConstraints);
+        menuOpciones.add(mItemSalir);
+        menuOpciones.add(jSeparator1);
 
-        botonLeerTodos.setBackground(new java.awt.Color(255, 255, 255));
-        botonLeerTodos.setText("Leer todos");
-        botonLeerTodos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonLeerTodosActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
-        panelBienvenida.add(botonLeerTodos, gridBagConstraints);
+        jMenuBar1.add(menuOpciones);
 
-        botonActualizar.setBackground(new java.awt.Color(255, 255, 255));
-        botonActualizar.setText("Actualizar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
-        panelBienvenida.add(botonActualizar, gridBagConstraints);
+        setJMenuBar(jMenuBar1);
 
-        botonEliminar.setBackground(new java.awt.Color(255, 255, 255));
-        botonEliminar.setText("Eliminar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
-        panelBienvenida.add(botonEliminar, gridBagConstraints);
-
-        panelPrincipal.add(panelBienvenida, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
-
-        setSize(new java.awt.Dimension(579, 344));
+        setSize(new java.awt.Dimension(771, 532));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+    private void mItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSalirActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_botonSalirActionPerformed
+    }//GEN-LAST:event_mItemSalirActionPerformed
 
-    private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
-        panelPrincipal.removeAll();
+    private void mItemNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemNuevoActionPerformed
+        desktop.removeAll();
         if (crear == null) {
-            crear = new Crear(); //dimension de la ventana [7, 20]
-            crearControl = new CrearControl(crear);
+            crear = new FCrear();
         }
-        panelPrincipal.add(crear, BorderLayout.CENTER);
-        botonAtras.setEnabled(true);
+        desktop.add(crear);
+        crear.setVisible(true);
         validate();
         repaint();
-    }//GEN-LAST:event_botonCrearActionPerformed
+    }//GEN-LAST:event_mItemNuevoActionPerformed
 
-    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
-        panelPrincipal.removeAll();
-        resetPaneles();
-        panelPrincipal.add(panelBienvenida, BorderLayout.CENTER);
-        botonAtras.setEnabled(false);
-        validate();
-        repaint();
-    }//GEN-LAST:event_botonAtrasActionPerformed
-
-    private void botonLeerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLeerTodosActionPerformed
-        panelPrincipal.removeAll();
+    private void mItemVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemVerActionPerformed
+        desktop.removeAll();
         if (buscar == null) {
-            buscar = new Buscar();
-            buscarControl = new BuscarControl(buscar);
+            buscar = new FBuscar();
         }
-        panelPrincipal.add(buscar, BorderLayout.CENTER);
-        botonAtras.setEnabled(true);
+        desktop.add(buscar);
+        buscar.setVisible(true);
         validate();
         repaint();
-    }//GEN-LAST:event_botonLeerTodosActionPerformed
+    }//GEN-LAST:event_mItemVerActionPerformed
 
-    private void resetPaneles() {
-        crear = null;
-        buscar = null;
-    }
     
     /**
      * @param args the command line arguments
@@ -258,18 +162,12 @@ public class VehicleApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonActualizar;
-    private javax.swing.JButton botonAtras;
-    private javax.swing.JButton botonCrear;
-    private javax.swing.JButton botonEliminar;
-    private javax.swing.JButton botonLeerTodos;
-    private javax.swing.JButton botonSalir;
-    private javax.swing.JLabel labelActualizar;
-    private javax.swing.JLabel labelCrear;
-    private javax.swing.JLabel labelEliminar;
-    private javax.swing.JLabel labelLeerTodos;
-    private javax.swing.JPanel panelBienvenida;
-    private javax.swing.JPanel panelBotones;
-    private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JDesktopPane desktop;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuItem mItemNuevo;
+    private javax.swing.JMenuItem mItemSalir;
+    private javax.swing.JMenuItem mItemVer;
+    private javax.swing.JMenu menuOpciones;
     // End of variables declaration//GEN-END:variables
 }

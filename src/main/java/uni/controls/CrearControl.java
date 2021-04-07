@@ -53,7 +53,7 @@ public class CrearControl {
         gson = new Gson();
         vehicleDaoImplement = new VehicleDaoImplement();
         this.crear = crear;
-        file = new File("C:/Users/gabri/workspace/VehicleApp/src/main/recursos/datosVehiculo.json");
+        file = new File("C:/Users/Sistemas-11/Desktop/VehicleApp/src/main/recursos/datosVehiculo.json");
         try {
             init();
         } catch (FileNotFoundException ex) {
