@@ -11,6 +11,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import uni.views.FCrear;
 import uni.views.FBuscar;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -37,9 +39,15 @@ public class VehicleApp extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        desktop = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/uni/images/DesktopWallpaper.jpg"));
+        Image image = icon.getImage();
+        desktop = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
         mItemNuevo = new javax.swing.JMenuItem();
@@ -54,7 +62,6 @@ public class VehicleApp extends javax.swing.JFrame {
         menuOpciones.setText("Opciones");
 
         mItemNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mItemNuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sistemas-11\\Desktop\\VehicleApp\\src\\main\\java\\uni\\images\\plus.png")); // NOI18N
         mItemNuevo.setText("Nuevo");
         mItemNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +71,6 @@ public class VehicleApp extends javax.swing.JFrame {
         menuOpciones.add(mItemNuevo);
 
         mItemVer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        mItemVer.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sistemas-11\\Desktop\\VehicleApp\\src\\main\\java\\uni\\images\\view.png")); // NOI18N
         mItemVer.setText("Ver todos");
         mItemVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +80,6 @@ public class VehicleApp extends javax.swing.JFrame {
         menuOpciones.add(mItemVer);
 
         mItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mItemSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sistemas-11\\Desktop\\VehicleApp\\src\\main\\java\\uni\\images\\exit.png")); // NOI18N
         mItemSalir.setText("Salir");
         mItemSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
