@@ -8,4 +8,4 @@ Es necesario leer todas las advertencias
 
 De ser posible cambiar la ruta del archivo de la clase "CrearControl.java" en la línea 55. Acordarse
 que se debe especificar el archivo al final de la nueva ruta. Tiene que quedar algo así "nueva_ruta_completa/datosVehiculo.json".
-Se deben cambiar todas las rutas de las imágenes en las propiedades de cada label, preferiblemente usar la opción de External Image
+Se deben cambiar todas las rutas de las imágenes en las propiedades de cada menuItem, preferiblemente usar la opción de External Image
