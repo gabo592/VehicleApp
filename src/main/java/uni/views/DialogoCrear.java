@@ -1,42 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uni.views;
 
 import java.awt.BorderLayout;
-import uni.panels.Actualizar;
-import uni.controls.ActualizarControl;
-import uni.pojo.Vehicle;
+import uni.panels.PanelCrear;
+import uni.controls.PanelCrearControl;
 
 /**
  *
- * @author gabri
+ * @author Sistemas-12
  */
-public class DActualizar extends javax.swing.JDialog {
-    
-    private Actualizar actualizar;
-    private ActualizarControl actualizarControl;
-    private static Vehicle vehicle;
+public class DialogoCrear extends javax.swing.JDialog {
+
+    private PanelCrear crear;
+    private PanelCrearControl crearControl;
 
     /**
-     * Creates new form DActualizar
+     * Creates new form DCrear
      * @param parent
      * @param modal
-     * @param vehicle
      */
-    public DActualizar(java.awt.Frame parent, boolean modal, Vehicle vehicle) {
+    public DialogoCrear(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        DActualizar.vehicle = vehicle;
         initComponents();
-        iniciar();
+        agregarPanel();
     }
-    
-    private void iniciar() {
-        actualizar = new Actualizar();
-        actualizarControl = new ActualizarControl(actualizar, vehicle);
-        panelPrincipal.add(actualizar, BorderLayout.CENTER);
+
+    private void agregarPanel() {
+        panelPrincipal.removeAll();
+        if (crear == null) {
+            crear = new PanelCrear();
+            crearControl = new PanelCrearControl(crear);
+        }
+        panelPrincipal.add(crear, BorderLayout.CENTER);
         validate();
         repaint();
     }
@@ -53,13 +47,13 @@ public class DActualizar extends javax.swing.JDialog {
         panelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Actualizar vehículo");
+        setTitle("Crear Vehiculo");
         setModal(true);
 
         panelPrincipal.setLayout(new java.awt.BorderLayout());
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(558, 339));
+        setSize(new java.awt.Dimension(511, 360));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -80,19 +74,20 @@ public class DActualizar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DActualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DActualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DActualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DActualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            DActualizar dialog = new DActualizar(new javax.swing.JFrame(), true, vehicle);
+            DialogoCrear dialog = new DialogoCrear(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {

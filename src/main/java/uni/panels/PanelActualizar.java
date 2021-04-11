@@ -16,28 +16,21 @@ import javax.swing.JTextField;
  *
  * @author gabri
  */
-public class Crear extends javax.swing.JPanel {
+public class PanelActualizar extends javax.swing.JPanel {
 
-    
-    
-    public JButton getBotonBuscarImagen() {
-        return botonBuscarImagen;
-    }
-    
-    public JTextField getjTextFieldImagen() {
-        return jTextFieldImagen;
-    }
-
-    public Crear() {
+    /**
+     * Creates new form Actualizar
+     */
+    public PanelActualizar() {
         initComponents();
     }
 
-    public JButton getBotonCrearV() {
-        return botonCrearV;
+    public JButton getBotonActualizar() {
+        return botonActualizar;
     }
 
-    public JButton getBotonNuevoV() {
-        return botonNuevoV;
+    public JButton getBotonBuscarImagen() {
+        return botonBuscarImagen;
     }
 
     public JComboBox<String> getComboColorE() {
@@ -58,6 +51,10 @@ public class Crear extends javax.swing.JPanel {
 
     public JComboBox<String> getComboModelo() {
         return comboModelo;
+    }
+
+    public JTextField getjTextFieldImagen() {
+        return jTextFieldImagen;
     }
 
     public JFormattedTextField getJfVin() {
@@ -108,7 +105,6 @@ public class Crear extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        groupTransmision = new javax.swing.ButtonGroup();
         labelStockNumber = new javax.swing.JLabel();
         labelTitulo = new javax.swing.JLabel();
         labelMarca = new javax.swing.JLabel();
@@ -137,11 +133,11 @@ public class Crear extends javax.swing.JPanel {
         tfEstilo = new javax.swing.JTextField();
         tfMotor = new javax.swing.JTextField();
         labelAño = new javax.swing.JLabel();
-        botonCrearV = new javax.swing.JButton();
-        botonNuevoV = new javax.swing.JButton();
+        botonActualizar = new javax.swing.JButton();
         jTextFieldImagen = new javax.swing.JTextField();
         botonBuscarImagen = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(176, 242, 194));
         setLayout(new java.awt.GridBagLayout());
 
         labelStockNumber.setText("Stock Number");
@@ -154,7 +150,7 @@ public class Crear extends javax.swing.JPanel {
 
         labelTitulo.setFont(new java.awt.Font("Source Serif Pro Semibold", 1, 18)); // NOI18N
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTitulo.setText("Nuevo Vehículo");
+        labelTitulo.setText("Actualizar Vehículo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -261,6 +257,7 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(2, 0, 2, 0);
         add(spinnerKm, gridBagConstraints);
 
+        comboMarcas.setBackground(new java.awt.Color(176, 242, 194));
         comboMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acura", "Aston Martin", "Audi", "BMW", "Bentley", "Buick", "Cadillac", "Chevrolet", "Chrysler", "Dodge", "Faraday Future", "Ferrari", "Fiat", "Ford", "Genesis", "GMC", "Honda", "Hyundai", "Infinity", "Jaguar", "Jeep", "Kia", "Lamborghini", "Land Rover", "Lexus", "Lotus", "Lincoln", "MINI", "Maserati", "Mazda", "Mercedes-Benz", "Mercedes-Maybach", "Mitsubishi", "Nissan", "Pontiac", "Porsche", "Rimac Automobili", "Rolls-Royce", "Scion", "Smart", "Subaru", "Tesla", "Toyota", "Volkswagen", "Volvo" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -269,6 +266,7 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(2, 0, 2, 0);
         add(comboMarcas, gridBagConstraints);
 
+        comboColorE.setBackground(new java.awt.Color(176, 242, 194));
         comboColorE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -277,6 +275,7 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(2, 0, 2, 0);
         add(comboColorE, gridBagConstraints);
 
+        comboColorI.setBackground(new java.awt.Color(176, 242, 194));
         comboColorI.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -285,6 +284,7 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 8, 3, 8);
         add(comboColorI, gridBagConstraints);
 
+        comboEstado.setBackground(new java.awt.Color(176, 242, 194));
         comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -321,7 +321,7 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 8, 3, 8);
         add(spinnerPrecio, gridBagConstraints);
 
-        groupTransmision.add(radioManual);
+        radioManual.setBackground(new java.awt.Color(176, 242, 194));
         radioManual.setText("Manual");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -330,7 +330,7 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 6, 3, 6);
         add(radioManual, gridBagConstraints);
 
-        groupTransmision.add(radioAuto);
+        radioAuto.setBackground(new java.awt.Color(176, 242, 194));
         radioAuto.setText("Automática");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -339,18 +339,13 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 6, 3, 6);
         add(radioAuto, gridBagConstraints);
 
+        comboModelo.setBackground(new java.awt.Color(176, 242, 194));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 8, 3, 8);
         add(comboModelo, gridBagConstraints);
-
-        tfStockNumber.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfStockNumberKeyTyped(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -378,23 +373,18 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(6, 23, 6, 23);
         add(labelAño, gridBagConstraints);
 
-        botonCrearV.setText("Crear");
+        botonActualizar.setBackground(new java.awt.Color(176, 242, 194));
+        botonActualizar.setText("Actualizar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        add(botonCrearV, gridBagConstraints);
-
-        botonNuevoV.setText("Nuevo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        add(botonNuevoV, gridBagConstraints);
+        add(botonActualizar, gridBagConstraints);
 
         jTextFieldImagen.setEditable(false);
+        jTextFieldImagen.setBackground(new java.awt.Color(255, 255, 255));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -403,6 +393,7 @@ public class Crear extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         add(jTextFieldImagen, gridBagConstraints);
 
+        botonBuscarImagen.setBackground(new java.awt.Color(176, 242, 194));
         botonBuscarImagen.setText("Imagen");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -412,27 +403,15 @@ public class Crear extends javax.swing.JPanel {
         add(botonBuscarImagen, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfStockNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfStockNumberKeyTyped
-        quitarNumeros(evt);
-    }//GEN-LAST:event_tfStockNumberKeyTyped
-
-    private void quitarNumeros(java.awt.event.KeyEvent evt) {
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonActualizar;
     private javax.swing.JButton botonBuscarImagen;
-    private javax.swing.JButton botonCrearV;
-    private javax.swing.JButton botonNuevoV;
     private javax.swing.JComboBox<String> comboColorE;
     private javax.swing.JComboBox<String> comboColorI;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JComboBox<String> comboMarcas;
     private javax.swing.JComboBox<String> comboModelo;
-    private javax.swing.ButtonGroup groupTransmision;
     private javax.swing.JTextField jTextFieldImagen;
     private javax.swing.JFormattedTextField jfVin;
     private javax.swing.JLabel labelAño;

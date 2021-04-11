@@ -6,23 +6,23 @@
 package uni.views;
 
 import java.awt.BorderLayout;
-import uni.panels.Buscar;
-import uni.controls.BuscarControl;
+import uni.panels.PanelBuscar;
+import uni.controls.PanelBuscarControl;
 import uni.observable.Observador;
 
 /**
  *
  * @author Sistemas-11
  */
-public class FBuscar extends javax.swing.JInternalFrame implements Observador {
+public class InternalFrameBuscar extends javax.swing.JInternalFrame implements Observador {
     
-    private Buscar buscar;
-    private BuscarControl buscarControl;
+    private PanelBuscar buscar;
+    private PanelBuscarControl buscarControl;
 
     /**
      * Creates new form FBuscar
      */
-    public FBuscar() {   
+    public InternalFrameBuscar() {   
         initComponents();
         bienvenida();
     }
@@ -30,8 +30,8 @@ public class FBuscar extends javax.swing.JInternalFrame implements Observador {
     private void bienvenida() {
         panelPrincipal.removeAll();
         if (buscar == null) {
-            buscar = new Buscar();
-            buscarControl = new BuscarControl(buscar);
+            buscar = new PanelBuscar();
+            buscarControl = new PanelBuscarControl(buscar);
         }
         panelPrincipal.add(buscar, BorderLayout.CENTER);
         buscarControl.enlazarObservador(this);

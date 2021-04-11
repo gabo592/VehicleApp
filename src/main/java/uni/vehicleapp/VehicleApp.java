@@ -7,21 +7,18 @@ package uni.vehicleapp;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDesktopPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import uni.views.FBuscar;
-import uni.views.DCrear;
-import uni.panels.Buscar;
-import uni.controls.BuscarControl;
+import uni.views.InternalFrameBuscar;
+import uni.views.DialogoCrear;
 
 /**
  *
  * @author gabri
  */
 public class VehicleApp extends javax.swing.JFrame {
-    private DCrear crear;
-    private FBuscar buscar;
+    private DialogoCrear crear;
+    private InternalFrameBuscar buscar;
 
     /**
      * Creates new form VehicleApp
@@ -90,13 +87,14 @@ public class VehicleApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mItemNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemNuevoActionPerformed
-        crear = new DCrear(this, true);
+        crear = new DialogoCrear(this, true);
         crear.setVisible(true);
+        mItemVerActionPerformed(evt);
     }//GEN-LAST:event_mItemNuevoActionPerformed
 
     private void mItemVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemVerActionPerformed
         desktop.removeAll();
-        buscar = new FBuscar();
+        buscar = new InternalFrameBuscar();
         desktop.add(buscar);
         buscar.setVisible(true);
         

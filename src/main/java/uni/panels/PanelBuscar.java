@@ -8,21 +8,17 @@ package uni.panels;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import uni.observable.Observador;
-import uni.controls.BuscarControl;
 
 /**
  *
  * @author gabri
  */
-public class Buscar extends javax.swing.JPanel {
-    
-    private BuscarControl control;
+public class PanelBuscar extends javax.swing.JPanel {
 
     /**
      * Creates new form Buscar
      */
-    public Buscar() {
+    public PanelBuscar() {
         initComponents();
     }
 
@@ -77,7 +73,7 @@ public class Buscar extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        panelCuadroBusqueda.setBackground(new java.awt.Color(253, 253, 150));
+        panelCuadroBusqueda.setBackground(new java.awt.Color(176, 194, 242));
         panelCuadroBusqueda.setLayout(new java.awt.GridBagLayout());
 
         labelBuscarID.setText("Buscar por ID:");
@@ -126,19 +122,28 @@ public class Buscar extends javax.swing.JPanel {
 
         add(panelCuadroBusqueda, java.awt.BorderLayout.PAGE_START);
 
+        panelBotones.setBackground(new java.awt.Color(252, 183, 175));
+
+        botonNuevo.setBackground(new java.awt.Color(252, 183, 175));
         botonNuevo.setText("Nuevo");
         panelBotones.add(botonNuevo);
 
+        botonActualizar.setBackground(new java.awt.Color(252, 183, 175));
         botonActualizar.setText("Actualizar");
         panelBotones.add(botonActualizar);
 
+        botonEliminar.setBackground(new java.awt.Color(252, 183, 175));
         botonEliminar.setText("Eliminar");
         panelBotones.add(botonEliminar);
 
         add(panelBotones, java.awt.BorderLayout.PAGE_END);
 
+        panelTabla.setBackground(new java.awt.Color(252, 183, 175));
         panelTabla.setLayout(new java.awt.BorderLayout());
 
+        jScrollPane1.setBackground(new java.awt.Color(252, 183, 175));
+
+        tablaVehiculos.setBackground(new java.awt.Color(252, 183, 175));
         tablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

@@ -21,26 +21,25 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.RowFilter;
 import javax.swing.JOptionPane;
 import uni.implement.VehicleDaoImplement;
-import uni.panels.Buscar;
+import uni.panels.PanelBuscar;
 import uni.pojo.Vehicle;
 import uni.observable.SujetoVehiculo;
 import uni.observable.Observador;
-import uni.views.DCrear;
+import uni.views.DialogoCrear;
 import uni.vehicleapp.VehicleApp;
-import uni.views.DActualizar;
+import uni.views.DialogoActualizar;
 
 /**
  *
  * @author gabri
  */
-public class BuscarControl implements SujetoVehiculo {
-    private static BuscarControl buscarControl;
+public final class PanelBuscarControl implements SujetoVehiculo {
     private List<Observador> observadores = new ArrayList<>();
-    private DActualizar actualizar;
-    private DCrear crear;
-    private static Buscar buscar;
+    private DialogoActualizar dialogoActualizar;
+    private DialogoCrear dialogoCrear;
+    private static PanelBuscar panelBuscar;
     private List<Vehicle> vehiculos;
-    private DefaultTableModel defaultTableModel;
+    private DefaultTableModel modeloTabla;
     private TableRowSorter tableRowSorter;
     private JTable tabla;
     private VehicleDaoImplement vDao;
@@ -49,20 +48,25 @@ public class BuscarControl implements SujetoVehiculo {
         "ID", "Stock Number", "Año", "Marca", "Modelo", "Estilo", "Vin", "Color Interior", "Color Exterior", "Millas", "Precio", "Transmisión", "Motor", "Imagen", "Estado"
     };
 
-    public BuscarControl(Buscar buscar) {
-        BuscarControl.buscar = buscar;
+    public PanelBuscarControl(PanelBuscar buscar) {
+        PanelBuscarControl.panelBuscar = buscar;
         vDao = new VehicleDaoImplement();
+        
         try {
             cargarTabla();
         } catch (IOException ex) {
-            Logger.getLogger(BuscarControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelBuscarControl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        //Asignación de eventos a los botones
         buscar.getBotonNuevo().addActionListener((ActionEvent e) -> {
             agregar();
         });
+        
         buscar.getBotonActualizar().addActionListener((ActionEvent e) -> {
             modificar();
         });
+        
         buscar.getBotonEliminar().addActionListener((ActionEvent e) -> {
             eliminar();
         });
@@ -71,7 +75,7 @@ public class BuscarControl implements SujetoVehiculo {
     public void cargarTabla() throws IOException {
         vehiculos = vDao.leer();
         if (vehiculos.isEmpty()) {
-            buscar.getTablaVehiculos().setModel(new DefaultTableModel());
+            panelBuscar.getTablaVehiculos().setModel(new DefaultTableModel());
             return;
         }
         
@@ -100,81 +104,95 @@ public class BuscarControl implements SujetoVehiculo {
             data[i][14] = vehiculos.get(i).getEstado();
         }
         
-        defaultTableModel = new DefaultTableModel(data, nombreColumnas);
-        buscar.getTablaVehiculos().setModel(defaultTableModel);
-        filtrar(defaultTableModel);
+        modeloTabla = new DefaultTableModel(data, nombreColumnas);
+        panelBuscar.getTablaVehiculos().setModel(modeloTabla);
+        filtrar(modeloTabla);
     }
     
-    private void filtrar(DefaultTableModel defaultTableModel) {
-        buscar.getFieldBuscarID().addKeyListener(new KeyAdapter() {
+    private void filtrar(DefaultTableModel modeloTabla) {
+        panelBuscar.getFieldBuscarID().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                fieldBuscarKeyEvent(e, defaultTableModel, buscar.getFieldBuscarID(), 0);
+                fieldBuscarKeyEvent(e, modeloTabla, panelBuscar.getFieldBuscarID(), 0);
             }
         });
-        buscar.getFieldBuscarEstado().addKeyListener(new KeyAdapter() {
+        
+        panelBuscar.getFieldBuscarEstado().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent ev) {
-                fieldBuscarKeyEvent(ev, defaultTableModel, buscar.getFieldBuscarEstado(), 14);
+                fieldBuscarKeyEvent(ev, modeloTabla, panelBuscar.getFieldBuscarEstado(), 14);
             }
         });
     }
     
-    private void fieldBuscarKeyEvent(KeyEvent e, DefaultTableModel defaultTableModel, JTextField textField, int columna) {
-        tableRowSorter = new TableRowSorter(defaultTableModel);
+    private void fieldBuscarKeyEvent(KeyEvent e, DefaultTableModel modeloTabla, JTextField textField, int columna) {
+        tableRowSorter = new TableRowSorter(modeloTabla);
         tableRowSorter.setRowFilter(RowFilter.regexFilter(textField.getText(), columna));
-        buscar.getTablaVehiculos().setRowSorter(tableRowSorter);
+        panelBuscar.getTablaVehiculos().setRowSorter(tableRowSorter);
     }
     
     public TableModel getTableModel() {
-        return buscar.getTablaVehiculos().getModel();
+        return panelBuscar.getTablaVehiculos().getModel();
     }
 
     @Override
     public void agregar() {
-        crear = new DCrear(app, true);
-        crear.setVisible(true);
+        dialogoCrear = new DialogoCrear(app, true);
+        dialogoCrear.setVisible(true);
         try {
             cargarTabla();
             notificar();
         } catch (IOException ex) {
-            Logger.getLogger(BuscarControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelBuscarControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public void modificar() {
-        tabla = buscar.getTablaVehiculos();
+        tabla = panelBuscar.getTablaVehiculos();
+        
         if (tabla.getSelectedRows().length > 1) {
-            JOptionPane.showMessageDialog(null, "No se pueden modificar varios objetos a la vez!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "¡No se pueden modificar varios objetos a la vez!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         if (tabla.getSelectedRows().length <= 0) {
-            JOptionPane.showMessageDialog(null, "Selecciona al menos uno!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "¡Selecciona al menos uno!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        int id = Integer.parseInt((String)tabla.getModel().getValueAt(buscar.getTablaVehiculos().getSelectedRow(), 0));
+        
+        //De la fila seleccionada se toma en cuenta solo la primera columna (el ID)
+        int id = Integer.parseInt((String)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0));
+        
+        //Se busca al objeto con ese ID
         Vehicle vehicle;
         try {
             vehicle = vDao.buscarPorId(id);
-            actualizar = new DActualizar(app, true, vehicle);
-            actualizar.setVisible(true);
+            dialogoActualizar = new DialogoActualizar(app, true, vehicle);
+            dialogoActualizar.setVisible(true);
             cargarTabla();
             notificar();
         } catch (IOException ex) {
-            Logger.getLogger(BuscarControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelBuscarControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public void eliminar() {
-        tabla = buscar.getTablaVehiculos();
+        tabla = panelBuscar.getTablaVehiculos();
+        
         if (tabla.getSelectedRows().length <= 0) {
             JOptionPane.showMessageDialog(null, "Seleccione al menos un vehículo", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminarlo/s?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (opcion == 1) {
+            return;
+        }
+        
         int[] ids = tabla.getSelectedRows();
         try {
+            //Para cada fila selccionada, se toma en cuenta solo la primer columna (el ID)
             for (int i : ids) {
                 int id = Integer.parseInt((String)tabla.getValueAt(i, 0));
                 Vehicle vehicle = vDao.buscarPorId(id);

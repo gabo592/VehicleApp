@@ -15,7 +15,7 @@ import com.google.gson.reflect.TypeToken;
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import uni.panels.Crear;
+import uni.panels.PanelCrear;
 import javax.swing.DefaultComboBoxModel;
 import java.util.Set;
 import java.util.logging.Level;
@@ -30,17 +30,16 @@ import uni.pojo.Vehicle.Transmission;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import uni.vehicleapp.VehicleApp;
 
 /**
  *
  * @author gabri
  */
-public class CrearControl {
+public class PanelCrearControl {
 
     private final Gson gson;
     private final File file;
-    private final Crear crear;
+    private final PanelCrear crear;
     private DefaultComboBoxModel colorI;
     private DefaultComboBoxModel colorE;
     private DefaultComboBoxModel modelo;
@@ -54,7 +53,7 @@ public class CrearControl {
     private FileFilter filter;
     public static String urlFile = "C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\recursos\\datosVehiculo.json";
 
-    public CrearControl(Crear crear) {
+    public PanelCrearControl(PanelCrear crear) {
         gson = new Gson();
         vehicleDaoImplement = new VehicleDaoImplement();
         filter = new FileNameExtensionFilter("Imágenes", "png", "jpg");
@@ -63,7 +62,7 @@ public class CrearControl {
         try {
             init();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(CrearControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelCrearControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -121,7 +120,7 @@ public class CrearControl {
                     JOptionPane.showMessageDialog(null, "No se pudo crear el objeto, intente de nuevo", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 }
             } catch (IOException ex) {
-                Logger.getLogger(CrearControl.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PanelCrearControl.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
@@ -134,11 +133,11 @@ public class CrearControl {
     
     private void botonImagenActionPerfomed() {
         crear.getBotonBuscarImagen().addActionListener((ActionEvent e) -> {
-            BuscarImagen(e);
+            buscarImagen(e);
         });
     }
     
-    private void BuscarImagen(ActionEvent e) {
+    private void buscarImagen(ActionEvent e) {
         JFileChooser JfileChooser = new JFileChooser();
         JfileChooser.setFileFilter(filter);
         int Opcion;

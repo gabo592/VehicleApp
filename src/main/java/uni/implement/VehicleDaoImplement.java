@@ -33,8 +33,10 @@ public class VehicleDaoImplement extends FilesConnection implements VehicleDao {
         Vehicle vehicle = null;
         getRandomConnection().getRafHead().seek(0);
         int n = getRandomConnection().getRafHead().readInt();
+        
         long posHead, posData;
         int idEncontrado;
+        
         for (int i = 0; i < n; i++) {
             posHead = 8 + (i * 8);
             getRandomConnection().getRafHead().seek(posHead);
@@ -157,7 +159,7 @@ public class VehicleDaoImplement extends FilesConnection implements VehicleDao {
     @Override
     public void eliminar(Vehicle t) throws IOException {
         /*
-        Estas listas servirán como backup de lo que se desea
+        Estas listas servirán como respaldo de lo que se desea
         conservar
         */
         List<Integer> listaIds = new ArrayList<>();
