@@ -8,12 +8,13 @@ package uni.views;
 import java.awt.BorderLayout;
 import uni.panels.Buscar;
 import uni.controls.BuscarControl;
+import uni.observable.Observador;
 
 /**
  *
  * @author Sistemas-11
  */
-public class FBuscar extends javax.swing.JInternalFrame {
+public class FBuscar extends javax.swing.JInternalFrame implements Observador {
     
     private Buscar buscar;
     private BuscarControl buscarControl;
@@ -21,7 +22,7 @@ public class FBuscar extends javax.swing.JInternalFrame {
     /**
      * Creates new form FBuscar
      */
-    public FBuscar() {
+    public FBuscar() {   
         initComponents();
         bienvenida();
     }
@@ -33,6 +34,7 @@ public class FBuscar extends javax.swing.JInternalFrame {
             buscarControl = new BuscarControl(buscar);
         }
         panelPrincipal.add(buscar, BorderLayout.CENTER);
+        buscarControl.enlazarObservador(this);
         validate();
         repaint();
     }
@@ -49,16 +51,22 @@ public class FBuscar extends javax.swing.JInternalFrame {
         panelPrincipal = new javax.swing.JPanel();
 
         setClosable(true);
+        setResizable(true);
         setTitle("Todos los vehículos");
 
         panelPrincipal.setLayout(new java.awt.BorderLayout());
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(396, 296));
+        setSize(new java.awt.Dimension(526, 288));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actualizar() {
+        buscar.getTablaVehiculos().setModel(buscarControl.getTableModel());
+    }
 }

@@ -5,24 +5,22 @@
  */
 package uni.vehicleapp;
 
-import java.awt.Graphics;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import uni.views.FCrear;
 import uni.views.FBuscar;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import uni.views.DCrear;
+import uni.panels.Buscar;
+import uni.controls.BuscarControl;
 
 /**
  *
  * @author gabri
  */
 public class VehicleApp extends javax.swing.JFrame {
-    private DCrear dCrear;
-    private FCrear crear;
+    private DCrear crear;
     private FBuscar buscar;
 
     /**
@@ -32,6 +30,7 @@ public class VehicleApp extends javax.swing.JFrame {
         initComponents(); //dimension de la ventana [63, 23]
         
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,8 +46,8 @@ public class VehicleApp extends javax.swing.JFrame {
         menuOpciones = new javax.swing.JMenu();
         mItemNuevo = new javax.swing.JMenuItem();
         mItemVer = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         mItemSalir = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vehicle App");
@@ -57,7 +56,7 @@ public class VehicleApp extends javax.swing.JFrame {
         menuOpciones.setText("Opciones");
 
         mItemNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mItemNuevo.setIcon(new javax.swing.ImageIcon("E:\\454\\55\\New Folder\\NewFolder\\VehicleApp\\src\\main\\java\\uni\\images\\plus.png")); // NOI18N
+        mItemNuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\plus.png")); // NOI18N
         mItemNuevo.setText("Nuevo");
         mItemNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +66,7 @@ public class VehicleApp extends javax.swing.JFrame {
         menuOpciones.add(mItemNuevo);
 
         mItemVer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        mItemVer.setIcon(new javax.swing.ImageIcon("E:\\454\\55\\New Folder\\NewFolder\\VehicleApp\\src\\main\\java\\uni\\images\\view.png")); // NOI18N
+        mItemVer.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\view.png")); // NOI18N
         mItemVer.setText("Ver todos");
         mItemVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,17 +74,12 @@ public class VehicleApp extends javax.swing.JFrame {
             }
         });
         menuOpciones.add(mItemVer);
+        menuOpciones.add(jSeparator2);
 
         mItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mItemSalir.setIcon(new javax.swing.ImageIcon("E:\\454\\55\\New Folder\\NewFolder\\VehicleApp\\src\\main\\java\\uni\\images\\exit.png")); // NOI18N
+        mItemSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\java\\uni\\images\\exit.png")); // NOI18N
         mItemSalir.setText("Salir");
-        mItemSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemSalirActionPerformed(evt);
-            }
-        });
         menuOpciones.add(mItemSalir);
-        menuOpciones.add(jSeparator1);
 
         jMenuBar1.add(menuOpciones);
 
@@ -95,23 +89,17 @@ public class VehicleApp extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_mItemSalirActionPerformed
-
     private void mItemNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemNuevoActionPerformed
-        if (dCrear == null){
-        dCrear = new DCrear(this, true);
-        }
+        crear = new DCrear(this, true);
+        crear.setVisible(true);
     }//GEN-LAST:event_mItemNuevoActionPerformed
 
     private void mItemVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemVerActionPerformed
         desktop.removeAll();
-        if (buscar == null) {
-            buscar = new FBuscar();
-        }
+        buscar = new FBuscar();
         desktop.add(buscar);
         buscar.setVisible(true);
+        
         validate();
         repaint();
     }//GEN-LAST:event_mItemVerActionPerformed
@@ -162,7 +150,7 @@ public class VehicleApp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem mItemNuevo;
     private javax.swing.JMenuItem mItemSalir;
     private javax.swing.JMenuItem mItemVer;

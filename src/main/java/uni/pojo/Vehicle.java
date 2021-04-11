@@ -187,5 +187,5 @@ public class Vehicle {
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }   
+    }
 }

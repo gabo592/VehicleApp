@@ -5,14 +5,19 @@
  */
 package uni.panels;
 
+import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import uni.observable.Observador;
+import uni.controls.BuscarControl;
 
 /**
  *
  * @author gabri
  */
 public class Buscar extends javax.swing.JPanel {
+    
+    private BuscarControl control;
 
     /**
      * Creates new form Buscar
@@ -33,6 +38,19 @@ public class Buscar extends javax.swing.JPanel {
         return fieldBuscarEstado;
     }
 
+    public JButton getBotonActualizar() {
+        return botonActualizar;
+    }
+
+    public JButton getBotonEliminar() {
+        return botonEliminar;
+    }
+
+    public JButton getBotonNuevo() {
+        return botonNuevo;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +67,12 @@ public class Buscar extends javax.swing.JPanel {
         labelTitulo = new javax.swing.JLabel();
         labelBuscarEstado = new javax.swing.JLabel();
         fieldBuscarEstado = new javax.swing.JTextField();
-        contendorTabla = new javax.swing.JScrollPane();
+        panelBotones = new javax.swing.JPanel();
+        botonNuevo = new javax.swing.JButton();
+        botonActualizar = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
+        panelTabla = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehiculos = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
@@ -103,6 +126,19 @@ public class Buscar extends javax.swing.JPanel {
 
         add(panelCuadroBusqueda, java.awt.BorderLayout.PAGE_START);
 
+        botonNuevo.setText("Nuevo");
+        panelBotones.add(botonNuevo);
+
+        botonActualizar.setText("Actualizar");
+        panelBotones.add(botonActualizar);
+
+        botonEliminar.setText("Eliminar");
+        panelBotones.add(botonEliminar);
+
+        add(panelBotones, java.awt.BorderLayout.PAGE_END);
+
+        panelTabla.setLayout(new java.awt.BorderLayout());
+
         tablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -113,37 +149,30 @@ public class Buscar extends javax.swing.JPanel {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tablaVehiculos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        tablaVehiculos.setEnabled(false);
-        contendorTabla.setViewportView(tablaVehiculos);
-        if (tablaVehiculos.getColumnModel().getColumnCount() > 0) {
-            tablaVehiculos.getColumnModel().getColumn(0).setResizable(false);
-            tablaVehiculos.getColumnModel().getColumn(1).setResizable(false);
-            tablaVehiculos.getColumnModel().getColumn(2).setResizable(false);
-            tablaVehiculos.getColumnModel().getColumn(3).setResizable(false);
-        }
+        jScrollPane1.setViewportView(tablaVehiculos);
 
-        add(contendorTabla, java.awt.BorderLayout.CENTER);
+        panelTabla.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        add(panelTabla, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane contendorTabla;
+    private javax.swing.JButton botonActualizar;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonNuevo;
     private javax.swing.JTextField fieldBuscarEstado;
     private javax.swing.JTextField fieldBuscarID;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelBuscarEstado;
     private javax.swing.JLabel labelBuscarID;
     private javax.swing.JLabel labelTitulo;
+    private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelCuadroBusqueda;
+    private javax.swing.JPanel panelTabla;
     private javax.swing.JTable tablaVehiculos;
     // End of variables declaration//GEN-END:variables
+
 }

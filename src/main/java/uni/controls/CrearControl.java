@@ -30,6 +30,7 @@ import uni.pojo.Vehicle.Transmission;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import uni.vehicleapp.VehicleApp;
 
 /**
  *
@@ -51,13 +52,14 @@ public class CrearControl {
     private Transmission transmision;
     private String ruta;
     private FileFilter filter;
+    public static String urlFile = "C:\\Users\\gabri\\workspace\\VehicleApp\\src\\main\\recursos\\datosVehiculo.json";
 
     public CrearControl(Crear crear) {
         gson = new Gson();
         vehicleDaoImplement = new VehicleDaoImplement();
         filter = new FileNameExtensionFilter("Imágenes", "png", "jpg");
         this.crear = crear;
-        file = new File("C:/Users/Sistemas-11/Desktop/VehicleApp/src/main/recursos/datosVehiculo.json");
+        file = new File(urlFile);
         try {
             init();
         } catch (FileNotFoundException ex) {

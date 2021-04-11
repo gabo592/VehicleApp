@@ -15,7 +15,7 @@
                   <KeyStroke key="Ctrl+N"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="E:\454\55\New Folder\NewFolder\VehicleApp\src\main\java\uni\images\plus.png"/>
+                  <Image iconType="2" name="C:\Users\gabri\workspace\VehicleApp\src\main\java\uni\images\plus.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nuevo"/>
               </Properties>
@@ -29,7 +29,7 @@
                   <KeyStroke key="Alt+P"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="E:\454\55\New Folder\NewFolder\VehicleApp\src\main\java\uni\images\view.png"/>
+                  <Image iconType="2" name="C:\Users\gabri\workspace\VehicleApp\src\main\java\uni\images\view.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver todos"/>
               </Properties>
@@ -37,21 +37,18 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mItemVerActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mItemSalir">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+Q"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="E:\454\55\New Folder\NewFolder\VehicleApp\src\main\java\uni\images\exit.png"/>
+                  <Image iconType="2" name="C:\Users\gabri\workspace\VehicleApp\src\main\java\uni\images\exit.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mItemSalirActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
             </MenuItem>
           </SubComponents>
         </Menu>
